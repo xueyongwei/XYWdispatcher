@@ -2,9 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>test2ViewController</key>
-	<string>test2ViewController</string>
 	<key>test1ViewController</key>
-	<string>test1ViewController</string>
+	<dict>
+		<key>className</key>
+		<string>test1ViewController</string>
+		<key>param</key>
+		<dict>
+			<key>str</key>
+			<string>str</string>
+			<key>id</key>
+			<string>test1ID</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

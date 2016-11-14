@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 /**
- *  在路由表中配置host与viewController的对应关系
+ *  先在路由表中配置host与viewController的对应关系
  */
 @interface XYWdispatcher : NSObject
+//在appdelegate中捕获url
 +(BOOL)HandleOpenURL:(NSURL *)url withScheme:(NSString *)scheme;
 @end

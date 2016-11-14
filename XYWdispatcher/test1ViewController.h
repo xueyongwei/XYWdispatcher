@@ -10,4 +10,5 @@
 
 @interface test1ViewController : UIViewController
 @property (nonatomic,strong)NSString *str;
+@property (nonatomic,strong)NSString *test1ID;
 @end
