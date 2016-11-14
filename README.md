@@ -8,7 +8,7 @@
 
 ## 使用方法
 1. 拖入XYWdispatcher文件夹到工程
-2. 在appdelegate里添加方法，或扩展方法
+2. 在appdelegate里添加方法，或扩展方法，传入当前应用的scheme
 <pre><code>
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
   
@@ -22,3 +22,6 @@
    }
 </code></pre>
   
+3. 在XYWdispatcherRouter.plist路由表里添加host和viewController的对应关系
+4. 使用浏览器输入XYWdispatcher://test1ViewController?str=hahahha即可打开应用并跳转到test1界面且传入str为hahahha
+5. 应用内跳转控制器使用：[[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"XYWdispatcher://test1ViewController?str=hahahha"]];
