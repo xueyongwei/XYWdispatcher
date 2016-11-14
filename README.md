@@ -9,12 +9,16 @@
 ## 使用方法
 1. 拖入XYWdispatcher文件夹到工程
 2. 在appdelegate里添加方法，或扩展方法
-  -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-  {
-     if ([XYWdispatcher HandleOpenURL:url withScheme:@"XYWdispatcher"]) {
-        return YES;
-    }else{//其他sdk代码
-        return NO;
-    }
-  //    return [XYWdispatcher HandleOpenURL:url withScheme:@"roter"];
-  }
+<pre><code>
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+  
+    {
+      if ([XYWdispatcher HandleOpenURL:url withScheme:@"XYWdispatcher"]) {
+         return YES;
+     }else{//其他sdk代码
+         return NO;
+      }
+   //    return [XYWdispatcher HandleOpenURL:url withScheme:@"roter"];
+   }
+</code></pre>
+  
