@@ -1,5 +1,5 @@
 # XYWdispatcher
-根据url地址跳转到相应界面
+根据url地址跳转到相应界面，通过plist关联host与viewController。
 ## 使用场景
 - 在网页里点击打开app，或者跳转到app里的详情页。将截获url，打开指定的控制器，并传入ViewController所需参数。
 - 收到推送，或者Socket等消息，跳转到消息列表或者内容详情。（需要servere配合传入uri字段。）
