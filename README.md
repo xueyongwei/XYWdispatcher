@@ -27,5 +27,6 @@
 1. 网页打开应用：使用浏览器输入XYWdispatcher://test1ViewController?str=hahahha即可打开应用并跳转到test1界面且传入str为“hahahha”
 2. 应用内跳转控制器：使用：[[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"XYWdispatcher://test1ViewController?str=hahahha"]];
 3. 推送或socket：接收到消息后，以5的方法打开uri即可。
+
 ## 容错
 - 遇到不识别的host和参数，都会弹窗提示“需要升级才能完成操作”，防止新版本的url旧版本无法识别而造成不可预知的错误。
