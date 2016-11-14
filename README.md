@@ -25,3 +25,4 @@
 3. 在XYWdispatcherRouter.plist路由表里添加host和viewController的对应关系
 4. 使用浏览器输入XYWdispatcher://test1ViewController?str=hahahha即可打开应用并跳转到test1界面且传入str为hahahha
 5. 应用内跳转控制器使用：[[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"XYWdispatcher://test1ViewController?str=hahahha"]];
+6. 接收到消息后同5打开uri即可。
