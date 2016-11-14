@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    /*
+     测试打开test1界面，在浏览器输入
+     XYWdispatcher://test1ViewController?str=xueyongwei
+     */
+    
 }
 
 - (void)didReceiveMemoryWarning {

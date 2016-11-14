@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "XYWdispatcher.h"
 @interface AppDelegate ()
 
 @end
@@ -19,7 +19,15 @@
     // Override point for customization after application launch.
     return YES;
 }
-
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([XYWdispatcher HandleOpenURL:url withScheme:@"XYWdispatcher"]) {
+        return YES;
+    }else{//其他sdk代码
+        return NO;
+    }
+//    return [XYWdispatcher HandleOpenURL:url withScheme:@"roter"];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
