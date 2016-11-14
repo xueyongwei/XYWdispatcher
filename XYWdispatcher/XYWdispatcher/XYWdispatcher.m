@@ -22,8 +22,9 @@
     NSArray *itms = [[url query] componentsSeparatedByString:@"&"];
     [self jumpVC:host withquerys:itms];
 }
--(void)jumpVC:(NSString *)vcClz withquerys:(NSArray *)querys
+-(void)jumpVC:(NSString *)host withquerys:(NSArray *)querys
 {
+    NSString *vcClz = [self classWithHost:host];
     id myObj = [[NSClassFromString(vcClz) alloc] init];
     NSAssert(myObj, @"没有这个%@类",vcClz);
     if (myObj) {
@@ -80,5 +81,11 @@
     }
     
     return result;
+}
+-(NSString *)classWithHost:(NSString *)host
+{
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"XYWdispatcherRouter" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    return [data objectForKey:host];
 }
 @end

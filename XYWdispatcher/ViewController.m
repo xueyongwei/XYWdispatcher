@@ -22,6 +22,9 @@
      */
     
 }
+- (IBAction)onClick:(id)sender {
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"XYWdispatcher://test1ViewController?str=hahahha"]];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

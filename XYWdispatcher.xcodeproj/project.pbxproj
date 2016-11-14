@@ -16,6 +16,7 @@
 		47F6AA501DD9A00B005F8F9F /* XYWdispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F6AA4F1DD9A00B005F8F9F /* XYWdispatcher.m */; };
 		47F6AA531DD9A064005F8F9F /* test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F6AA521DD9A064005F8F9F /* test1ViewController.m */; };
 		47F6AA561DD9A06D005F8F9F /* test2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F6AA551DD9A06D005F8F9F /* test2ViewController.m */; };
+		47F6AA5A1DD9A9A8005F8F9F /* XYWdispatcherRouter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47F6AA591DD9A9A8005F8F9F /* XYWdispatcherRouter.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		47F6AA521DD9A064005F8F9F /* test1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test1ViewController.m; sourceTree = "<group>"; };
 		47F6AA541DD9A06D005F8F9F /* test2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test2ViewController.h; sourceTree = "<group>"; };
 		47F6AA551DD9A06D005F8F9F /* test2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test2ViewController.m; sourceTree = "<group>"; };
+		47F6AA591DD9A9A8005F8F9F /* XYWdispatcherRouter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XYWdispatcherRouter.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				47F6AA4E1DD9A00B005F8F9F /* XYWdispatcher.h */,
 				47F6AA4F1DD9A00B005F8F9F /* XYWdispatcher.m */,
+				47F6AA591DD9A9A8005F8F9F /* XYWdispatcherRouter.plist */,
 			);
 			path = XYWdispatcher;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				47F6AA461DD99FF9005F8F9F /* LaunchScreen.storyboard in Resources */,
 				47F6AA431DD99FF9005F8F9F /* Assets.xcassets in Resources */,
 				47F6AA411DD99FF9005F8F9F /* Main.storyboard in Resources */,
+				47F6AA5A1DD9A9A8005F8F9F /* XYWdispatcherRouter.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,11 +293,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: rui xue (U79HV83WQC)";
 				INFOPLIST_FILE = XYWdispatcher/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pub.xyw.XYWdispatcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "667ad727-fd76-46d2-95a5-705abfdf9db5";
 			};
 			name = Debug;
 		};
@@ -301,11 +307,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: rui xue (U79HV83WQC)";
 				INFOPLIST_FILE = XYWdispatcher/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pub.xyw.XYWdispatcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "667ad727-fd76-46d2-95a5-705abfdf9db5";
 			};
 			name = Release;
 		};
@@ -328,6 +336,7 @@
 				47F6AA4C1DD99FF9005F8F9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
