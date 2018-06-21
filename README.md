@@ -1,5 +1,6 @@
 # XYWdispatcher
 通过注册scheme，可直接给出URL，通过url地址跳转到相应界面，同时支持传值。
+
 在使用过程中，建议遵守URLComponents规则。
 
 这里就粗略的举个例子来说明url的组成：
