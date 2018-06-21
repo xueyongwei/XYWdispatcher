@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4754642B20DB7E3C00CF2E25 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4754642A20DB7E3C00CF2E25 /* README.md */; };
 		47F6AA381DD99FF9005F8F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F6AA371DD99FF9005F8F9F /* main.m */; };
 		47F6AA3B1DD99FF9005F8F9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F6AA3A1DD99FF9005F8F9F /* AppDelegate.m */; };
 		47F6AA3E1DD99FF9005F8F9F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F6AA3D1DD99FF9005F8F9F /* ViewController.m */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4754642A20DB7E3C00CF2E25 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		47F6AA331DD99FF8005F8F9F /* XYWdispatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYWdispatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F6AA371DD99FF9005F8F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		47F6AA391DD99FF9005F8F9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				47F6AA421DD99FF9005F8F9F /* Assets.xcassets */,
 				47F6AA441DD99FF9005F8F9F /* LaunchScreen.storyboard */,
 				47F6AA471DD99FF9005F8F9F /* Info.plist */,
+				4754642A20DB7E3C00CF2E25 /* README.md */,
 				47F6AA361DD99FF9005F8F9F /* Supporting Files */,
 			);
 			path = XYWdispatcher;
@@ -164,6 +167,7 @@
 			files = (
 				47F6AA461DD99FF9005F8F9F /* LaunchScreen.storyboard in Resources */,
 				47F6AA431DD99FF9005F8F9F /* Assets.xcassets in Resources */,
+				4754642B20DB7E3C00CF2E25 /* README.md in Resources */,
 				47F6AA411DD99FF9005F8F9F /* Main.storyboard in Resources */,
 				47F6AA661DD9C3E0005F8F9F /* XYWdispatcherRouter.plist in Resources */,
 			);
