@@ -62,6 +62,7 @@ fragment  |  ref
 ```[XYWdispatcher updateDispatcher];```
 
 如果您没有服务器（个人或公司）来存放配置文件，我建议您把配置文件放在GitHub上，然后从GitHub下载即可。
+
 注意：您应该通过这种方式获得GitHub上文件的下载地址：
 1. 点击项目地址 (比如https://github.com/xueyongwei/XYWdispatcher)
 2. 点击文件名 (比如：README.md)
