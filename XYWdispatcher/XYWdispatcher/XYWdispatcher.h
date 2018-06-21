@@ -13,4 +13,8 @@
 @interface XYWdispatcher : NSObject
 //在appdelegate中捕获url
 +(BOOL)HandleOpenURL:(NSURL *)url withScheme:(NSString *)scheme;
+
+// 更新分发器
++(void)updateDispatcher;
+
 @end

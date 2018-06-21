@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "XYWdispatcher.h"
 @interface ViewController ()
 
 @end
@@ -22,8 +22,11 @@
      */
     
 }
+- (IBAction)onUpdate:(UIButton *)sender {
+    [XYWdispatcher updateDispatcher];
+}
 - (IBAction)onClick:(id)sender {
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"XYWdispatcher://test1ViewController?str=hahahha"]];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"XYWdispatcher://test1ViewController/search;type=1?str=hahahha"]];
 }
 
 - (void)didReceiveMemoryWarning {
