@@ -29,7 +29,7 @@ fragment  |  ref
 ## 使用示例
 需求：在APP里分享一组对战，别人通过网页打开，点击“对战详情”时打开app，并且到达此场pk的详情界面。
 
-做法：只需要在网页里的按钮 添加点击URL:[zuoyoupk://pkdetail?pkID=10010](zuoyoupk://pkdetail?pkID=10010)
+做法：只需要在网页里的按钮 添加点击URL: [zuoyoupk://pkdetail?pkID=10010](#zuoyoupk://pkdetail?pkID=10010)
 
  当在网页里点击时会发生：
 1. 打开左右app
@@ -56,6 +56,18 @@ fragment  |  ref
 ## 远程配置
 一般情况下，我们无法预料后续版本会要跳转哪些界面，甚至APP里会创建哪些控制器，这样的话此功能就会有版本限制。
 所以我们需要一个可以远程配置的功能，让旧版本的app也能打开已有的控制器。（已做 [容错](#容错) 处理）
+在XYWdispatcher文件夹下，附带一个plist文件以供配置。当需要远程配置的时候，您需要一个远程文件的下载地址，在XYWdispatcher实现文件里的downloadRouterFile方法下，修改即可。
+当您需要更新配置的时候(建议每次启动时跟新)，只需要调用:
+
+```[XYWdispatcher updateDispatcher];```
+
+如果您没有服务器（个人或公司）来存放配置文件，我建议您把配置文件放在GitHub上，然后从GitHub下载即可。
+注意：您应该通过这种方式获得GitHub上文件的下载地址：
+1. 点击项目地址 (比如https://github.com/xueyongwei/XYWdispatcher)
+2. 点击文件名 (比如：README.md)
+3. 在文件详情的右上角点击“Raw”，打开的网页地址就是下载地址
+
+也可以在raw上右键下载文件以得到文件的下载地址，而不是通过```https://github.com/xueyongwei/XYWdispatcher/blob/master/README.md```来下载。（您会下载到一个网页）
 
 ## 测试效果
  在appdelegate里的```-(Bool)application openURL```方法捕获```XYWdispatcher```
