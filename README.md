@@ -29,7 +29,7 @@ fragment  |  ref
 ## 使用示例
 需求：在APP里分享一组对战，别人通过网页打开，点击“对战详情”时打开app，并且到达此场pk的详情界面。
 
-做法：只需要在网页里的按钮 添加点击URL:[zuoyoupk://pkdetail?pkID=10010]
+做法：只需要在网页里的按钮 添加点击URL:[zuoyoupk://pkdetail?pkID=10010](zuoyoupk://pkdetail?pkID=10010)
 
  当在网页里点击时会发生：
 1. 打开左右app
@@ -55,7 +55,7 @@ fragment  |  ref
 ```
 ## 远程配置
 一般情况下，我们无法预料后续版本会要跳转哪些界面，甚至APP里会创建哪些控制器，这样的话此功能就会有版本限制。
-所以我们需要一个可以远程配置的功能，让旧版本的app也能打开已有的控制器。（已做 (#容错) 处理）
+所以我们需要一个可以远程配置的功能，让旧版本的app也能打开已有的控制器。（已做 [容错](#容错) 处理）
 
 ## 测试效果
  在appdelegate里的```-(Bool)application openURL```方法捕获```XYWdispatcher```
