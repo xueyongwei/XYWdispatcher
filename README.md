@@ -23,6 +23,13 @@ parameterString  |  param=value
 query  |  query=value
 fragment  |  ref
 
+建议：
+- scheme：bundleID或app名（如：weixin://或者com.115://）
+- host：控制器类名 (如：pkdetail)
+- query：控制器属性
+
+（更高阶的用法，您可以parameter对应控制器属性，query对应方法名）
+
 ## 使用场景
 - 在网页里点击链接打开app，或者跳转到app里的某个详情页界面。
 - 收到推送，或者Socket等消息，点击后跳转到消息列表或者内容详情。
