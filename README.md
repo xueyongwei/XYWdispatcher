@@ -26,16 +26,22 @@ fragment  |  ref
 建议：
 - scheme：bundleID或app名（如：weixin://或者com.115://）
 - host：控制器类名 (如：pkdetail)
-- query：控制器属性
+- path:操作方法（如：like）
+- query：控制器属性（如：id=123）
 
-（更高阶的用法，您可以parameter对应控制器属性，query对应方法名）
 格式举例：
- urlStr = "XYWAPP://experiencegroup/open?id=123"
+ urlStr = "XYWAPP://pkdetail/like?id=123"
 说明：
-scheme：XYWAPP           -    你的app的scheme
-host：experiencegroup    -    你的experiencegroupViewController
-path：open    -    你的操作方法
-query: id=123 - 你的控制器属性
+
+scheme：XYWAPP        
+
+host：pkdetail  
+
+path：like
+
+query: id=123
+
+操作解析：打开XYWAPP，跳转到pkdetail控制器，给id=123的pk点个赞。
 
 ## 使用场景
 - 在网页里点击链接打开app，或者跳转到app里的某个详情页界面。
