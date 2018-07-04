@@ -52,7 +52,7 @@ query:  id=123
 ## 使用示例
 需求：在APP里分享一组对战，别人通过网页打开，点击“对战详情”时打开app，并且到达此场pk的详情界面。
 
-做法：只需要在网页里的按钮 添加点击URL: [zuoyoupk://pkdetail?pkID=10010](#zuoyoupk://pkdetail?pkID=10010)
+做法：只需要在网页里的按钮 添加点击URL: [zuoyoupk://pkdetail/open?pkID=10010](#zuoyoupk://pkdetail/open?pkID=10010)
 
  当在网页里点击时会发生：
 1. 打开左右app
