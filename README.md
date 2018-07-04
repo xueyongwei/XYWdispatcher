@@ -23,7 +23,7 @@ parameterString  |  param=value
 query  |  query=value
 fragment  |  ref
 
-建议：
+使用XYWdispatcher格式建议：
 - scheme：bundleID或app名（如：weixin://或者com.115://）
 - host：控制器类名 (如：pkdetail)
 - path:操作方法（如：like）
