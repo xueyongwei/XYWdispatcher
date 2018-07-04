@@ -28,21 +28,20 @@ fragment  |  ref
 - host：控制器类名 (如：pkdetail)
 - path:操作方法（如：like）
 - query：控制器属性（如：id=123）
+```
 
 格式举例：
  urlStr = "XYWAPP://pkdetail/like?id=123"
+ 
 说明：
-
-scheme：XYWAPP        
-
-host：pkdetail  
-
-path：like
-
-query: id=123
+scheme： XYWAPP        
+host： pkdetail  
+path： like
+query:  id=123
 
 操作解析：打开XYWAPP，跳转到pkdetail控制器，给id=123的pk点个赞。
 
+```
 ## 使用场景
 - 在网页里点击链接打开app，或者跳转到app里的某个详情页界面。
 - 收到推送，或者Socket等消息，点击后跳转到消息列表或者内容详情。
