@@ -29,6 +29,13 @@ fragment  |  ref
 - query：控制器属性
 
 （更高阶的用法，您可以parameter对应控制器属性，query对应方法名）
+格式举例：
+ urlStr = "XYWAPP://experiencegroup/open?id=123"
+说明：
+scheme：XYWAPP           -    你的app的scheme
+host：experiencegroup    -    你的experiencegroupViewController
+path：open    -    你的操作方法
+query: id=123 - 你的控制器属性
 
 ## 使用场景
 - 在网页里点击链接打开app，或者跳转到app里的某个详情页界面。
