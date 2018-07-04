@@ -1,9 +1,12 @@
 # XYWdispatcher
+iOS deeplink，通用**跨平台**解决方案。
 通过注册scheme，可直接给出URL，通过url地址跳转到相应界面，同时支持传值。
+特色：支持远程配置，支持版本兼容与扩展。
 
+## 建议格式
 在使用过程中，建议遵守URLComponents规则。
 
-这里就粗略的举个例子来说明url的组成：
+这里粗略的举个例子来说明url的组成：
 
 https://johnny:p4ssw0rd@www.example.com:443/script.ext;param=value?query=value#ref
 
@@ -23,13 +26,25 @@ parameterString  |  param=value
 query  |  query=value
 fragment  |  ref
 
-建议：
+使用XYWdispatcher格式建议：
 - scheme：bundleID或app名（如：weixin://或者com.115://）
 - host：控制器类名 (如：pkdetail)
-- query：控制器属性
+- path:操作方法（如：like）
+- query：控制器属性（如：id=123）
+```
 
-（更高阶的用法，您可以parameter对应控制器属性，query对应方法名）
+格式举例：
+ urlStr = "XYWAPP://pkdetail/like?id=123"
+ 
+说明：
+scheme： XYWAPP        
+host： pkdetail  
+path： like
+query:  id=123
 
+操作解析：打开XYWAPP，跳转到pkdetail控制器，给id=123的pk点个赞。
+
+```
 ## 使用场景
 - 在网页里点击链接打开app，或者跳转到app里的某个详情页界面。
 - 收到推送，或者Socket等消息，点击后跳转到消息列表或者内容详情。
@@ -37,7 +52,7 @@ fragment  |  ref
 ## 使用示例
 需求：在APP里分享一组对战，别人通过网页打开，点击“对战详情”时打开app，并且到达此场pk的详情界面。
 
-做法：只需要在网页里的按钮 添加点击URL: [zuoyoupk://pkdetail?pkID=10010](#zuoyoupk://pkdetail?pkID=10010)
+做法：只需要在网页里的按钮 添加点击URL: [zuoyoupk://pkdetail/open?pkID=10010](#zuoyoupk://pkdetail/open?pkID=10010)
 
  当在网页里点击时会发生：
 1. 打开左右app
