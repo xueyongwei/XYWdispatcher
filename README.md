@@ -1,9 +1,12 @@
 # XYWdispatcher
+iOS deeplink，通用**跨平台**解决方案。
 通过注册scheme，可直接给出URL，通过url地址跳转到相应界面，同时支持传值。
+特色：支持远程配置，支持版本兼容与扩展。
 
+## 建议格式
 在使用过程中，建议遵守URLComponents规则。
 
-这里就粗略的举个例子来说明url的组成：
+这里粗略的举个例子来说明url的组成：
 
 https://johnny:p4ssw0rd@www.example.com:443/script.ext;param=value?query=value#ref
 
