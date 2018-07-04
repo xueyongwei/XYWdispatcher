@@ -10,27 +10,46 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 @interface XYWdispatcher()
-@property (nonatomic,copy)NSString *schemeHost;
-@property (nonatomic,strong) NSMutableDictionary *paramDic;
+@property (class,nonatomic,copy)NSString *scheme;
+@property (class,nonatomic,strong,readonly) NSMutableDictionary *routerDictionary;
 @end
 @implementation XYWdispatcher
--(id)initWithHost:(NSString *)host
-{
-    if (self = [super init] ) {
-        self.schemeHost = host;
-    };
-    return self;
+
+static NSString* _scheme = nil;
+static NSMutableDictionary* _paramDic = nil;
+
++ (NSString*)scheme{
+    return _scheme;
 }
-+(BOOL)HandleOpenURL:(NSURL *)url withScheme:(NSString *)scheme
-{
-    NSLog(@"%@",url);
-    [[[self alloc]initWithHost:url.host] handleSchemes:url];
-    return [url.scheme isEqualToString:scheme];
++ (void)setScheme:(NSString *)scheme{
+    _scheme = scheme;
 }
--(void)handleSchemes:(NSURL *)url
-{
+
+// 路由信息
++(NSMutableDictionary *)routerDictionary{
+    if (_paramDic == nil){
+        _paramDic = [self defaultRouterPlistDictionary];
+    }
+    return _paramDic;
+}
+
++ (void) registerScheme:(NSString *)scheme{
+    self.scheme = scheme;
+}
+
++(BOOL) handleURL:(NSURL *) url{
+    if (self.scheme != nil && [url.scheme isEqualToString:self.scheme]){
+        [self nativeHandleUrl:url];
+        return true;
+    }else{
+        return false;
+    }
+}
++(void)nativeHandleUrl:(NSURL *)url{
     NSString *host = [url host];
+    NSString *path = [url path];
     NSArray *itms = [[url query] componentsSeparatedByString:@"&"];
+    
     [self jumpVC:host withquerys:itms];
 }
 /**
@@ -39,28 +58,43 @@
  *  @param host   url的host
  *  @param querys 请求参数
  */
--(void)jumpVC:(NSString *)host withquerys:(NSArray *)querys
++ (void)jumpVC:(NSString *)host withquerys:(NSArray *)querys
 {
-    NSString *vcClz = [self classWithHost];
-    id myObj = [[NSClassFromString(vcClz) alloc] init];
-    if (!myObj) {
+    NSDictionary *hostInfo  = [self getInfoOfHost:host];
+    
+    NSString *vcClz = [self getClassNameInHostInfo:hostInfo];
+    
+    if (vcClz == nil){
+        NSLog(@"无路由信息%@",vcClz);
         UIAlertView *alv = [[UIAlertView alloc]initWithTitle:@"需要升级才能完成操作" message:nil delegate:nil cancelButtonTitle:@"好的" otherButtonTitles: nil];
         [alv show];
         return;
     }
     
-    if (myObj) {
+    id myObj = [[NSClassFromString(vcClz) alloc] init];
+    
+    
+    
+    if (myObj == nil) {
+        NSLog(@"不支持的类%@",vcClz);
+        UIAlertView *alv = [[UIAlertView alloc]initWithTitle:@"需要升级才能完成操作" message:nil delegate:nil cancelButtonTitle:@"好的" otherButtonTitles: nil];
+        [alv show];
+        return;
+    }else{
         for (NSString *itm in querys) {
-            NSArray *keyvalues = [itm componentsSeparatedByString:@"="];
-            NSString *VCkey = [self paramWithQuery:keyvalues.firstObject];
+            
+            NSArray *queryKeyValue = [itm componentsSeparatedByString:@"="];
+            
+            NSString *VCkey = [self getClassVarNameOfQuery:queryKeyValue.firstObject inHostInfo:hostInfo];
+            
             if ([self getVariableWithClass:[myObj class] varName: VCkey]) {
-                [myObj setValue:keyvalues.lastObject forKey:VCkey];
+                [myObj setValue:queryKeyValue.lastObject forKey:VCkey];
             }else{
+                NSLog(@"不支持的参数%@,但是仍会跳转。",VCkey);
                 UIAlertView *alv = [[UIAlertView alloc]initWithTitle:@"需要升级才能完成操作" message:nil delegate:nil cancelButtonTitle:@"好的" otherButtonTitles: nil];
                 [alv show];
-                return;
+                break;
             }
-            
         }
     }
     UIViewController *currentVC = [self getCurrentVC];
@@ -71,11 +105,12 @@
         [currentVC presentViewController:myObj animated:YES completion:nil];
     }
 }
+
 /**
  *  得到当前显示的VC
  *
  */
-- (UIViewController *)getCurrentVC{
++ (UIViewController *)getCurrentVC{
     
     UIViewController *result = nil;
     UIWindow * window = [[UIApplication sharedApplication] keyWindow];
@@ -115,11 +150,12 @@
     
     return result;
 }
+
 /**
  *  判断某个类是否有某个参数，防止 setvalue forkey 崩溃
  *
  */
-- (BOOL)getVariableWithClass:(Class) myClass varName:(NSString *)name{
++ (BOOL)getVariableWithClass:(Class) myClass varName:(NSString *)name{
     unsigned int outCount, i;
     Ivar *ivars = class_copyIvarList(myClass, &outCount);
     for (i = 0; i < outCount; i++) {
@@ -136,25 +172,23 @@
  *  返回VC的各参数名
  *
  */
--(NSString *)paramWithQuery:(NSString *)query
++(NSString *)getClassVarNameOfQuery:(NSString *)query inHostInfo:(NSDictionary *)info
 {
-    if (!self.paramDic) {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"XYWdispatcherRouter" ofType:@"plist"];
-        NSMutableDictionary *routerData = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-        NSDictionary *vcClz = [routerData objectForKey:self.schemeHost];
-        NSDictionary *param = [vcClz objectForKey:@"param"];
-        self.paramDic = [NSMutableDictionary dictionaryWithDictionary:param];
-    }
-    return [self.paramDic objectForKey:query];
+    NSDictionary *param = [info objectForKey:@"param"];
+    return [param objectForKey:query];
 }
+
++(NSDictionary *)getInfoOfHost:(NSString *)host{
+    NSDictionary *hostDic = [self.routerDictionary objectForKey:host];
+    return hostDic;
+}
+
 /**
  *  返回VC的类名
  *
  */
--(NSString *)classWithHost{
-    NSMutableDictionary *routerData = [XYWdispatcher routerPlistDictionary];
-    NSDictionary *vcClz = [routerData objectForKey:self.schemeHost];
-    return vcClz[@"className"];
++(NSString *)getClassNameInHostInfo:(NSDictionary *)info{
+    return info[@"className"];
 }
 
 /**
@@ -162,7 +196,7 @@
 
  @return 字典
  */
-+(NSMutableDictionary *)routerPlistDictionary{
++(NSMutableDictionary *)defaultRouterPlistDictionary{
     NSURL *plistPath = [self routerPlistUrl];
     NSMutableDictionary *routerData = [NSMutableDictionary dictionaryWithContentsOfURL:plistPath];
     return routerData;

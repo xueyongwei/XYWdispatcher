@@ -17,11 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [XYWdispatcher registerScheme:@"XYWdispatcher"];
     return YES;
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([XYWdispatcher HandleOpenURL:url withScheme:@"XYWdispatcher"]) {
+    if ([XYWdispatcher handleURL:url]) {
         return YES;
     }else{//其他sdk代码
         return NO;
